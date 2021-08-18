@@ -6,20 +6,38 @@ let input = null;
 let add_error = document.getElementById('text_alert');
 
 
-window.onload = function init () {
+window.onload = async function init () {
     input = document.getElementById('add-task');
     input.addEventListener('change', updateValue);
+    const resp = await fetch('http://localhost:8000/allTasks', {
+        method: 'GET'
+    });
+    let result = await resp.json();
+    allTask = result.data;
     render();
 };
 
 //Обработка пустой строки
-onClickBtn = () => {
+onClickBtn = async () => {
 
     if(valueInput.length) {
         allTask.push({
             text: valueInput,
             isCheck: false
         });
+        const resp = await fetch('http://localhost:8000/createTask', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8',
+                'Access-Control-Allow-Origin': '*'
+            },
+            body: JSON.stringify({
+                text: valueInput,
+                isCheck: false
+            })
+        });
+        let result = await resp.json();
+        allTask = result.data;
         localStorage.setItem('tasks', JSON.stringify(allTask));
         valueInput = '';
         input.value = '';
@@ -36,7 +54,7 @@ updateValue = (event) => {
     valueInput = event.target.value;
 };
 
-render = () => {
+render = async () => {
     const content = document.getElementById('content-page');
     while(content.firstChild) {
         content.removeChild(content.firstChild);
@@ -81,12 +99,24 @@ render = () => {
             <button type="button" class="btn-add" onclick="onClickEdit()">Add</button>
             <button type="button" class="btn-cancel" onclick="onClickCancel()">Back</button>
             `
-            onClickEdit = () => {
+            onClickEdit = async () => {
                 let input_add = document.getElementById('add-task2');
                 text.innerText = input_add.value;
                 item.text = input_add.value;
                 test_Edit.remove();
-                BtnEdit.style.display ="block";
+                const resp = await fetch('http://localhost:8000/updateTask', {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json;charset=utf-8',
+                        'Access-Control-Allow-Origin': '*'
+                    },
+                    body: JSON.stringify({
+                        id: allTask[index].id,
+                        text: item.text
+                    })
+                });
+                let result = await resp.json();
+                allTask = result.data;
                 localStorage.setItem('tasks', JSON.stringify(allTask));
             }
 
@@ -117,14 +147,34 @@ render = () => {
     });
 };
 
-onChangeCheckbox = (index) => {
+onChangeCheckbox = async (index) => {
     allTask[index].isCheck = !allTask[index].isCheck;
+    const resp = await fetch('http://localhost:8000/updateTask', {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8',
+            'Access-Control-Allow-Origin': '*'
+        },
+        body: JSON.stringify({
+            id: allTask[index].id,
+            isCheck: allTask[index].isCheck
+        })
+    });
+    let result = await resp.json();
+    allTask = result.data;
     localStorage.setItem('tasks', JSON.stringify(allTask));
     render();
 };
 
-onclicBtnDelete = (index) => {
-    allTask.splice(index, 1);
+onclicBtnDelete = async (index) => {
+    const resp = await fetch(`http://localhost:8000/deleteTask?id=${allTask[index].id}`, {
+        method: 'DELETE',
+    });
+    const resp1 = await fetch('http://localhost:8000/allTasks', {
+        method: 'GET'
+    });
+    let result = await resp.json();
+    allTask = result.data;
     localStorage.setItem('tasks', JSON.stringify(allTask));
     render();
 };
