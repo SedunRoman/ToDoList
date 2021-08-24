@@ -2,8 +2,8 @@ let allTask = JSON.parse(localStorage.getItem('tasks')) || [];
 let valueInput = '';
 let input = null;
 let add_error = document.getElementById('text_alert');
-let clearAll = document.getElementById('content-clear');
-window.onload = async function init() {
+const clearAll = document.getElementById('content-clear');
+window.onload = async () => {
   input = document.getElementById('add-task');
   input.addEventListener('change', updateValue);
   const resp = await fetch('http://localhost:8000/allTasks', {
@@ -40,7 +40,7 @@ const onClickBtn = async () => {
 const updateValue = (event) => {
   valueInput = event.target.value;
 };
-render = async () => {
+const render = async () => {
   const content = document.getElementById('content-page');
   while (content.firstChild) {
     content.removeChild(content.firstChild);
@@ -57,9 +57,7 @@ render = async () => {
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
     checkbox.checked = item.isCheck;
-    checkbox.onchange = () => {
-      onChangeCheckbox(index);
-    };
+    checkbox.onchange = () => onChangeCheckbox(index);
     container.appendChild(checkbox);
     const text = document.createElement('p');
     text.innerText = item.text;
@@ -72,12 +70,12 @@ render = async () => {
       const test_Edit = document.createElement('div');
       test_Edit.className = 'test_edit';
       test_Edit.innerHTML = `
-            <input type="text" id="add-task2" value='${item.text}'/>
-            <button type="button" class="btn-add" onclick="onClickEdit()">Add</button>
-            <button type="button" class="btn-cancel" onclick="onClickCancel()">Back</button>
-            `
+        <input type="text" id="add-task2" value='${item.text}'/>
+        <button type="button" class="btn-add" onclick="onClickEdit()">Add</button>
+        <button type="button" class="btn-cancel" onclick="onClickCancel()">Back</button>
+        `
       onClickEdit = async () => {
-        let input_add = document.getElementById('add-task2');
+        const input_add = document.getElementById('add-task2');
         text.innerText = input_add.value;
         item.text = input_add.value;
         test_Edit.remove();
@@ -104,12 +102,12 @@ render = async () => {
       container.appendChild(test_Edit);
     };
     container.appendChild(btnEdit);
-    const BtnDelete = document.createElement('button');
-    BtnDelete.className = 'button_del';
-    BtnDelete.onclick = () => {
+    const btnDelete = document.createElement('button');
+    btnDelete.className = 'button_del';
+    btnDelete.onclick = () => {
       onclicBtnDelete(index);
     };
-    container.appendChild(BtnDelete);
+    container.appendChild(btnDelete);
     if (allTask[index].isCheck) {
       btnEdit.style.display = "none";
       content.appendChild(container);
@@ -120,8 +118,8 @@ render = async () => {
   });
 };
 const onChangeCheckbox = async (index) => {
-  const { _id, isCheck } = allTask[index];
   allTask[index].isCheck = !allTask[index].isCheck;
+  const { _id, isCheck } = allTask[index];
   const resp = await fetch('http://localhost:8000/updateTask', {
     method: 'PATCH',
     headers: {

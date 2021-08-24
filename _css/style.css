@@ -1,98 +1,23 @@
-*,
-*::before,
-*::after {
+*, *::before, *::after {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-html,
-body,
-div,
-span,
-applet,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-a,
-abbr,
-acronym,
-address,
-big,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-ins,
-kbd,
-q,
-s,
-samp,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-var,
-b,
-u,
-i,
-center,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-article,
-aside,
-canvas,
-details,
-embed,
-figure,
-figcaption,
-footer,
-header,
-hgroup,
-menu,
-nav,
-output,
-ruby,
-section,
-summary,
-time,
-mark,
-audio,
-video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
+blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img,
+ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center,
+dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot,
+thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer,
+header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
 }
+
 body {
   font-family: Arial, Helvetica, sans-serif;
   position: relative;
@@ -101,6 +26,7 @@ body {
   line-height: 1;
   background-color: #eff0e0;
 }
+
 .clear {
   content: "";
   display: block;
@@ -110,22 +36,26 @@ body {
   padding: 0;
   margin: 0;
 }
+
 .main {
   width: 100%;
   max-width: 500px;
 }
+
 .main_bg {
   min-height: 100vh;
   background: url(../_images/bg_main.jpg) no-repeat;
   background-size: cover;
   padding: 5% 0 1% 10%;
 }
+
 .main-title {
   position: relative;
   display: inline-block;
   margin-bottom: 20px;
   padding-right: 60px;
 }
+
 .main-title::before {
   content: "";
   position: absolute;
@@ -136,6 +66,7 @@ body {
   background: url(../_images/icon_title.png) no-repeat;
   background-size: cover;
 }
+
 .main-title h1 {
   font-weight: bold;
   font-style: normal;
@@ -144,17 +75,20 @@ body {
   text-align: left;
   color: #8e6b76;
 }
+
 .main-content {
   width: 100%;
   max-width: 500px;
   text-align: left;
   margin: 0 auto 20px;
 }
+
 .main-content-text {
   display: inline-block;
   vertical-align: bottom;
   width: 80%;
 }
+
 .main-content-text-alert {
   height: 15px;
   font-weight: normal;
@@ -165,6 +99,7 @@ body {
   text-align: left;
   padding: 0 5px;
 }
+
 .main-content-text input {
   display: block;
   width: 100%;
@@ -180,9 +115,11 @@ body {
   padding: 5px 10px;
   transition: border 0.2s ease-out 0s;
 }
+
 .main-content-text input:focus {
   border: 2px solid #66b0bf;
 }
+
 .main-content-button {
   display: inline-block;
   vertical-align: bottom;
@@ -190,6 +127,7 @@ body {
   margin-top: 14px;
   margin-left: 1%;
 }
+
 .main-content-button button {
   display: block;
   width: 100%;
@@ -209,13 +147,16 @@ body {
   transition: background 0.2s ease-out 0s, color 0.2s ease-out 0s,
     opacity 0.2s ease-out 0s;
 }
+
 .main-content-button button:hover {
   color: #fff;
   background: #66b0bf;
 }
+
 .main-content-button button:active {
   opacity: 0.8;
 }
+
 .result_block {
   width: 100%;
   max-width: 500px;
@@ -228,10 +169,12 @@ body {
   overflow-y: scroll;
   overflow-x: hidden;
 }
+
 .result_clear_all {
   width: 200px;
   margin: 1% 0 5% 0;
 }
+
 .result_clear_all button {
   display: block;
   width: 100%;
@@ -251,21 +194,26 @@ body {
   transition: background 0.2s ease-out 0s, color 0.2s ease-out 0s,
     opacity 0.2s ease-out 0s;
 }
+
 ::-webkit-scrollbar {
   width: 8px;
   background-color: #fff;
 }
+
 ::-webkit-scrollbar-thumb {
   background-color: #d3c6c3;
   border-radius: 5px;
 }
+
 .task-container {
   position: relative;
   margin-bottom: 20px;
 }
+
 .task-container:last-of-type {
   margin-bottom: 0;
 }
+
 .task-container input {
   display: inline-block;
   vertical-align: top;
@@ -276,20 +224,24 @@ body {
   border: 2px solid #66b0bf;
   border-radius: 5px;
 }
+
 .test_edit {
   display: none;
   margin-top: 15px;
   width: 100%;
   background-color: #fff;
 }
+
 .test_edit:first-of-type {
   display: block;
 }
+
 .test_edit button {
   margin-top: 15px;
   width: 100%;
   background-color: #fff;
 }
+
 .test_edit input {
   display: inline-block;
   vertical-align: top;
@@ -300,9 +252,11 @@ body {
   outline: none;
   transition: border 0.2s ease-out 0s;
 }
+
 .test_edit input:focus {
   border: 2px solid #b4a4a0;
 }
+
 .test_edit .btn-add {
   position: static;
   display: inline-block;
@@ -317,6 +271,7 @@ body {
   transition: background 0.2s ease-out 0s, color 0.2s ease-out 0s,
     opacity 0.2s ease-out 0s;
 }
+
 .test_edit .btn-cancel {
   position: static;
   display: inline-block;
@@ -331,17 +286,21 @@ body {
   transition: background 0.2s ease-out 0s, color 0.2s ease-out 0s,
     opacity 0.2s ease-out 0s;
 }
+
 .test_edit button:hover {
   background: #b4a4a0;
   color: #fff;
 }
+
 .test_edit button:active {
   opacity: 0.8;
 }
+
 .task-container img {
   max-width: 19px;
   margin: 0 5px;
 }
+
 .task-container button {
   position: absolute;
   top: 0;
@@ -354,16 +313,19 @@ body {
   margin: 0;
   padding: 0;
 }
+
 .task-container .button_edit {
   right: 30px;
   background: url(../_images/icon1.png) no-repeat;
   background-size: cover;
 }
+
 .task-container .button_del {
   right: 0;
   background: url(../_images/icon2.png) no-repeat;
   background-size: cover;
 }
+
 .text-task {
   display: inline-block;
   vertical-align: top;
@@ -374,14 +336,18 @@ body {
   margin-left: 5px;
   overflow: hidden;
 }
+
 .done-text {
   color: rgba(0, 0, 0, 0.3);
   text-decoration: line-through;
 }
+
 @media only screen and (max-width: 649.98px) {
+
   .main_bg {
     padding: 10% 10px 250px;
   }
+
   .main_bg::after {
     content: "";
     position: absolute;
@@ -394,40 +360,51 @@ body {
     background: url(../_images/bg-cat2.png) no-repeat;
     background-size: cover;
   }
+
   .main {
     margin: 0 auto;
   }
+
   .result_block {
     margin: 0 auto;
   }
+
   .result_clear_all {
     margin: 20px auto;
   }
+
   .task-container {
     padding-top: 20px;
     margin-bottom: 5px;
     border-top: 1px solid #b4a4a0;
   }
+
   .task-container:first-of-type {
     border-top: none;
     padding-top: 0;
   }
+
   .task-container:first-of-type .button_edit {
     top: 0;
   }
+
   .task-container:first-of-type .button_del {
     top: 0;
   }
+
   .task-container .button_edit {
     top: 20px;
   }
+
   .task-container .button_del {
     top: 20px;
   }
+
   .test_edit {
     margin-bottom: 15px;
     text-align: center;
   }
+
   .text-task {
     display: block;
     width: 100%;
@@ -435,6 +412,7 @@ body {
     margin: 0;
     padding: 10px 0;
   }
+
   .test_edit input {
     display: block;
     width: 100%;
@@ -442,12 +420,15 @@ body {
     max-width: 100%;
     margin: 0 auto 10px;
   }
+
   .test_edit .btn-add {
     width: 30%;
     margin: 0 2%;
   }
+
   .test_edit .btn-cancel {
     width: 30%;
     margin: 0 2%;
   }
+  
 }
